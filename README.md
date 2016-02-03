@@ -1,2 +1,0 @@
-# addons
-Kubernetes Addons

@@ -53,10 +53,11 @@ spec:
         # command = "/kube2sky"
         - -domain=cluster.local
         - -etcd-server=http://etcd.k8s.internal:2379
-        # - -kube_master_url=http://master.k8s.internal:8080
-        # - -v=6
+        - -kube_master_url=http://master.k8s.internal:8080
+        - -v=6
+        - -logtostderr
       - name: skydns
-        image: gcr.io/google_containers/skydns:2015-10-13-8c72f8c
+        image: skynetservices/skydns:latest
         resources:
           limits:
             cpu: 100m
@@ -66,7 +67,7 @@ spec:
         - -machines=http://etcd.k8s.internal:2379
         - -addr=0.0.0.0:53
         - -domain=cluster.local.
-        - -ns-rotate=false
+        # - -ns-rotate=false
         - -verbose=true
         ports:
         - containerPort: 53

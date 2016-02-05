@@ -53,6 +53,7 @@ spec:
         # command = "/kube2sky"
         - -domain=cluster.local
         - -etcd-server=http://etcd.k8s.internal:2379
+        - -kube_master_url=http://master.k8s.internal:8080
       - name: skydns
         image: gcr.io/google_containers/skydns:2015-10-13-8c72f8c
         resources:
@@ -99,8 +100,4 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-      volumes:
-      - name: etcd-storage
-        emptyDir: {}
       dnsPolicy: Default
-
